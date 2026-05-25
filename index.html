@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHOSEN, Beyond Egmore · An Offline Partnerships Playbook</title>
+<meta name="description" content="A 90-day offline partnerships playbook for CHOSEN by Dermatology. Prepared by Harsh Jain Ashok.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   TOKENS
+============================================================ */
+:root {
+  --cream: #f0eae0;
+  --cream-deep: #e6dfd1;
+  --cream-light: #f5f0e6;
+  --black: #0c0c0c;
+  --black-soft: #1a1a1a;
+  --red: #e63b2e;
+  --red-deep: #c22d22;
+  --ink: #1a1a1a;
+  --ink-2: #4a4544;
+  --ink-3: #6b6663;
+  --ink-4: #8c8783;
+  --line: #d8d2c4;
+  --line-soft: #e4ddcc;
+  --green: #2d7a3f;
+  --green-bg: #d6e6d9;
+  --amber: #b87a1f;
+  --amber-bg: #f0e0c4;
+  --slate: #4f5a5d;
+  --slate-bg: #dce0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   SCROLL PROGRESS INDICATOR
+============================================================ */
+.progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0,0,0,0.04);
+  z-index: 1000;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--red);
+  width: 0;
+  transition: width 0.08s linear;
+}
+
+/* ============================================================
+   TYPOGRAPHY PRIMITIVES
+============================================================ */
+.display {
+  font-family: 'Anton', 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 500;
+  display: inline-block;
+}
+.section-dark .eyebrow,
+.section-red .eyebrow { color: var(--cream); }
+
+.mono {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+.italic-sans {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ============================================================
+   SECTION FRAME
+============================================================ */
+.section {
+  min-height: 100vh;
+  padding: clamp(40px, 5vh, 80px) clamp(24px, 6vw, 96px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.section-dark { background: var(--black); color: var(--cream-light); }
+.section-red { background: var(--red); color: var(--cream-light); }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.9vw, 12px);
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  margin-bottom: clamp(40px, 8vh, 80px);
+  flex-shrink: 0;
+}
+.section-dark .section-header,
+.section-red .section-header { color: rgba(245,240,230,0.55); }
+
+.section-header .brand {
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.section-dark .section-header .brand,
+.section-red .section-header .brand { color: var(--cream-light); }
+
+.section-header .brand .brand-sub {
+  margin-left: 8px;
+  font-weight: 400;
+  color: var(--ink-4);
+  letter-spacing: 0.04em;
+  font-size: 0.9em;
+  text-transform: none;
+}
+.section-dark .section-header .brand .brand-sub,
+.section-red .section-header .brand .brand-sub { color: rgba(245,240,230,0.55); }
+
+.section-header .section-id {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.section-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  color: var(--ink-4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: clamp(30px, 6vh, 60px);
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.section-dark .section-footer,
+.section-red .section-footer {
+  color: rgba(245,240,230,0.4);
+  border-top-color: rgba(245,240,230,0.15);
+}
+
+/* ============================================================
+   01 · COVER
+============================================================ */
+.cover .section-header { color: rgba(245,240,230,0.7); }
+.cover .display-stack { margin-top: auto; }
+.cover h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(60px, 12vw, 180px);
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: clamp(20px, 3vh, 40px);
+}
+.cover h1 .accent { color: var(--red); }
+.cover h1 .comma { color: var(--red); }
+.cover .subtitle {
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 300;
+  color: rgba(245,240,230,0.75);
+  max-width: 720px;
+  line-height: 1.5;
+}
+.cover-meta {
+  display: flex;
+  gap: clamp(20px, 4vw, 60px);
+  flex-wrap: wrap;
+  margin-top: clamp(40px, 6vh, 80px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(245,240,230,0.15);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.06em;
+  color: rgba(245,240,230,0.55);
+  text-transform: uppercase;
+}
+.cover-meta strong {
+  display: block;
+  color: var(--cream-light);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   EDITORIAL TWO-COLUMN
+============================================================ */
+.editorial {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.editorial .editorial-left { position: sticky; top: 0; }
+.editorial h2 {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: clamp(36px, 5.5vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-top: clamp(20px, 3vh, 32px);
+}
+.editorial h2 .accent { color: var(--red); }
+.editorial .editorial-eyebrow { margin-bottom: 0; }
+
+.editorial-right p {
+  font-size: clamp(15px, 1.25vw, 19px);
+  color: var(--ink-2);
+  margin-bottom: 18px;
+  line-height: 1.55;
+  max-width: 580px;
+}
+.editorial-right p:last-child { margin-bottom: 0; }
+.editorial-right p strong { color: var(--ink); font-weight: 600; }
+.editorial-right .pull {
+  color: var(--red);
+  font-weight: 600;
+  font-size: clamp(16px, 1.4vw, 22px);
+  line-height: 1.4;
+  margin-top: 16px;
+}
+
+/* ============================================================
+   ASSUMPTIONS SECTION (NEW)
+============================================================ */
+.assumptions-section .assumptions-h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(8px, 1.5vh, 16px);
+}
+.assumptions-section .assumptions-h2 .accent { color: var(--red); }
+.assumptions-section .assumptions-lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 820px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  line-height: 1.45;
+}
+.assumptions-list {
+  border-top: 2px solid var(--ink);
+}
+.assumption {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(20px, 2.8vh, 32px) 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.assumption-id {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.005em;
+  color: var(--red);
+  font-weight: 400;
+  line-height: 1;
+}
+.assumption-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: clamp(8px, 1.2vh, 12px);
+}
+.assumption-note {
+  font-size: clamp(13px, 1.05vw, 15px);
+  color: var(--ink-3);
+  line-height: 1.55;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ============================================================
+   FULL-BLEED DIVIDER (RED)
+============================================================ */
+.divider .section-body { justify-content: flex-start; padding-top: 8vh; }
+.divider h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(80px, 16vw, 280px);
+  line-height: 0.85;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: clamp(30px, 5vh, 60px) 0 clamp(30px, 4vh, 50px);
+}
+.divider .subtitle {
+  font-size: clamp(16px, 1.7vw, 22px);
+  font-weight: 300;
+  color: rgba(245,240,230,0.85);
+  max-width: 720px;
+  line-height: 1.45;
+}
+
+/* ============================================================
+   STATEMENT NUMBER SECTION
+============================================================ */
+.statement {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+  flex-grow: 1;
+}
+.statement-num {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(120px, 22vw, 320px);
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  color: var(--red);
+  font-weight: 400;
+}
+.statement-num .small { font-size: 0.5em; vertical-align: 0.15em; letter-spacing: -0.05em; }
+.statement-label {
+  margin-top: clamp(16px, 2vh, 28px);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  line-height: 1.45;
+}
+.statement-right h3 {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 50px);
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: clamp(16px, 2.5vh, 28px);
+}
+.statement-right p {
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.statement-right p:last-of-type { margin-bottom: 0; }
+.statement-right p strong { color: var(--ink); font-weight: 600; }
+.statement-source {
+  margin-top: clamp(20px, 3vh, 32px);
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+.statement-source .source-tag {
+  background: var(--ink);
+  color: var(--cream-light);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   QUOTE CARD
+============================================================ */
+.quote-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+  flex-grow: 1;
+}
+.quote-card {
+  position: relative;
+  padding: clamp(28px, 4vh, 48px) clamp(28px, 4vw, 56px);
+  border-left: 3px solid var(--red);
+}
+.quote-card .quote-text {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(22px, 2.6vw, 38px);
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: clamp(20px, 3vh, 32px);
+  letter-spacing: -0.005em;
+}
+.quote-card .quote-attr {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.quote-card .quote-attr strong {
+  color: var(--ink);
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+/* ============================================================
+   MICRO-MARKETS GRID
+============================================================ */
+.markets-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(8px, 1.5vh, 16px);
+}
+.markets-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 760px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 50px);
+  line-height: 1.45;
+}
+.markets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.5vw, 24px);
+}
+.market {
+  background: var(--cream-light);
+  padding: clamp(20px, 2.5vh, 30px) clamp(20px, 2.2vw, 32px);
+  border-left: 2px solid var(--line);
+}
+.market.flagship { border-left-color: var(--red); background: #faf5e8; }
+.market-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--ink-4);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.market.flagship .market-id .badge { color: var(--red); font-weight: 600; }
+.market-name {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.market-desc {
+  font-size: clamp(13px, 0.95vw, 15px);
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PHASE SECTION HEADERS
+============================================================ */
+.phase-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(12px, 2vh, 20px);
+}
+.phase-section h2 .accent { color: var(--red); }
+.phase-section .phase-lead {
+  font-size: clamp(15px, 1.3vw, 19px);
+  color: var(--ink-2);
+  max-width: 820px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 40px);
+  line-height: 1.5;
+}
+.phase-section .phase-lead strong { color: var(--ink); font-weight: 500; }
+
+/* ============================================================
+   CHANNEL LADDER (RANK-TIERED)
+============================================================ */
+.channels-list { border-top: 2px solid var(--ink); }
+.channel {
+  display: grid;
+  grid-template-columns: 90px 1fr 130px 130px;
+  gap: clamp(16px, 2vw, 28px);
+  padding: clamp(20px, 2.8vh, 32px) 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+
+.channel-rank {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.rank-num {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.rank-num .ord {
+  font-size: 0.45em;
+  vertical-align: 0.7em;
+  margin-left: -0.05em;
+}
+.rank-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 4px;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* Tier colours */
+.channel.tier-lead .rank-num { color: var(--green); }
+.channel.tier-lead .rank-label { background: var(--green-bg); color: var(--green); }
+
+.channel.tier-build .rank-num { color: var(--ink); }
+.channel.tier-build .rank-label { background: var(--cream-deep); color: var(--ink-2); }
+
+.channel.tier-test .rank-num { color: var(--amber); }
+.channel.tier-test .rank-label { background: var(--amber-bg); color: var(--amber); }
+
+.channel.tier-defer .rank-num { color: var(--slate); }
+.channel.tier-defer .rank-label { background: var(--slate-bg); color: var(--slate); }
+
+.channel-info .channel-name {
+  font-size: clamp(15px, 1.3vw, 19px);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.channel-info .channel-desc {
+  font-size: clamp(13px, 1vw, 15px);
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.channel-info .channel-reason {
+  font-size: clamp(12px, 0.95vw, 14px);
+  font-style: italic;
+  color: var(--red);
+  line-height: 1.45;
+  font-weight: 400;
+}
+.channel-stat .stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink-4);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.channel-stat .stat-value {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(18px, 1.8vw, 24px);
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+.channel-stat .stat-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: var(--ink-3);
+  margin-top: 2px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   NAMED VENUES
+============================================================ */
+.venues-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 760px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  line-height: 1.45;
+}
+.venues-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.venue-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: clamp(20px, 3vw, 48px);
+  padding: clamp(16px, 2vh, 24px) 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.venue-row:last-child { border-bottom: 0; }
+.venue-row:first-child { border-top: 2px solid var(--ink); padding-top: clamp(20px, 2.5vh, 28px); }
+.venue-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.venue-label .tier-mark {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8em;
+  color: var(--red);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.venue-list-text {
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.venue-list-text strong { color: var(--ink); font-weight: 600; }
+.venue-list-text .recommend {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.92em;
+  color: var(--ink-3);
+  font-style: italic;
+}
+
+/* ============================================================
+   PITCH CARD (dark)
+============================================================ */
+.pitch-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(12px, 2vh, 18px);
+  color: var(--cream-light);
+}
+.pitch-section h2 .accent { color: var(--red); }
+.pitch-section .pitch-context {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(14px, 1.15vw, 17px);
+  color: rgba(245,240,230,0.65);
+  margin-bottom: clamp(20px, 3vh, 32px);
+  max-width: 760px;
+  line-height: 1.5;
+}
+
+.pitch-card {
+  background: rgba(245,240,230,0.04);
+  border-left: 3px solid var(--red);
+  padding: clamp(28px, 4vh, 48px) clamp(28px, 4vw, 56px);
+  max-width: 900px;
+}
+.pitch-subject {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.1em;
+  color: rgba(245,240,230,0.55);
+  text-transform: uppercase;
+  margin-bottom: clamp(20px, 3vh, 32px);
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(245,240,230,0.15);
+  font-weight: 500;
+}
+.pitch-subject .subject-to { color: var(--cream-light); font-weight: 600; }
+
+.pitch-block { margin-bottom: clamp(16px, 2vh, 24px); }
+.pitch-block:last-child { margin-bottom: 0; }
+.pitch-block .block-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  color: var(--red);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.pitch-block .block-text {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.55;
+  color: rgba(245,240,230,0.92);
+  font-weight: 400;
+}
+.pitch-block .block-text em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-light);
+}
+
+/* ============================================================
+   TERMS TABLE
+============================================================ */
+.terms-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 760px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  line-height: 1.45;
+}
+table.terms {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.terms th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  font-weight: 500;
+  color: var(--ink-4);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px clamp(12px, 1.5vw, 24px) 14px 0;
+  border-bottom: 2px solid var(--ink);
+}
+table.terms td {
+  padding: clamp(16px, 2vh, 24px) clamp(12px, 1.5vw, 24px) clamp(16px, 2vh, 24px) 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--ink-2);
+  font-size: clamp(13px, 1.05vw, 16px);
+}
+table.terms td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  width: 28%;
+}
+table.terms td.when {
+  width: 22%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(11px, 0.95vw, 13px);
+  color: var(--red);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+table.terms tr.default td:first-child::before {
+  content: "▸ ";
+  color: var(--red);
+  font-weight: 700;
+}
+table.terms tr.default td { background: var(--cream-light); }
+
+/* ============================================================
+   TRACKER / WORKED EXAMPLE
+============================================================ */
+.tracker-section .worked-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: clamp(20px, 3vh, 32px);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(11px, 1vw, 13px);
+  color: var(--ink-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.tracker-section .worked-header strong { color: var(--ink); font-weight: 600; }
+
+.worked-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+}
+.worked-col h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.worked-line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: clamp(10px, 1.5vh, 14px) 0;
+  border-bottom: 1px dotted var(--line);
+  font-size: clamp(13px, 1.05vw, 15px);
+}
+.worked-line:last-child { border-bottom: 0; }
+.worked-line .w-label { color: var(--ink-2); }
+.worked-line .w-val {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.worked-line.total {
+  border-top: 2px solid var(--ink);
+  border-bottom: 0;
+  margin-top: 8px;
+  padding-top: clamp(12px, 1.8vh, 18px);
+}
+.worked-line.total .w-label { color: var(--ink); font-weight: 600; }
+.worked-line.total .w-val { color: var(--red); font-size: 1.05em; }
+
+.diagnosis {
+  margin-top: clamp(28px, 4vh, 48px);
+  padding-top: clamp(20px, 3vh, 32px);
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  font-size: clamp(13px, 1.05vw, 15px);
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.diagnosis strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   DECISION RULES
+============================================================ */
+.rules-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 760px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  line-height: 1.45;
+}
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 32px);
+}
+.rule {
+  background: var(--cream-light);
+  padding: clamp(24px, 3vh, 36px) clamp(24px, 2.5vw, 36px);
+  border-top: 3px solid var(--green);
+}
+.rule.diagnose { border-top-color: var(--amber); }
+.rule.drop { border-top-color: var(--red); }
+.rule-name {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.rule.diagnose .rule-name { color: var(--amber); }
+.rule.drop .rule-name { color: var(--red); }
+.rule-tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  margin-bottom: clamp(16px, 2.5vh, 24px);
+  padding-bottom: clamp(12px, 2vh, 18px);
+  border-bottom: 1px solid var(--line);
+}
+.rule-lines { font-size: clamp(13px, 1.05vw, 15px); }
+.rule-line {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  gap: 12px;
+  padding: clamp(7px, 1vh, 10px) 0;
+  align-items: baseline;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.rule-line .key {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  font-weight: 500;
+}
+
+/* ============================================================
+   CITY SCORECARD
+============================================================ */
+.scorecard-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(8px, 1.5vh, 16px);
+}
+.scorecard-section h2 .accent { color: var(--red); }
+.scorecard-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 820px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  line-height: 1.45;
+}
+.scorecard-section .lead strong { color: var(--ink); font-weight: 500; }
+table.scorecard {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.scorecard th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  font-weight: 500;
+  color: var(--ink-4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 8px;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+  vertical-align: bottom;
+  line-height: 1.35;
+}
+table.scorecard th:first-child { text-align: left; }
+table.scorecard td {
+  padding: clamp(16px, 2vh, 22px) 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(13px, 1.1vw, 16px);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+table.scorecard td:first-child {
+  text-align: left;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  font-size: clamp(18px, 1.8vw, 26px);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+table.scorecard td.total {
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--cream-deep);
+}
+table.scorecard tr.pick td { background: #faf5e8; }
+table.scorecard tr.pick td.total { color: var(--red); background: #fce8e6; }
+table.scorecard tr.pick td:first-child::after {
+  content: " ▸ PROPOSED";
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.scorecard-note {
+  margin-top: clamp(20px, 3vh, 32px);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-transform: none;
+}
+.scorecard-note strong {
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.92em;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* ============================================================
+   CITY PLAYS
+============================================================ */
+.cities-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(28px, 5vh, 48px);
+}
+.cities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+}
+.city {
+  border-top: 3px solid var(--red);
+  padding: clamp(24px, 3vh, 36px) 0 0;
+}
+.city-sequence {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: clamp(12px, 2vh, 18px);
+}
+.city-sequence.active { background: var(--green-bg); color: var(--green); }
+.city-sequence.conditional { background: var(--amber-bg); color: var(--amber); }
+.city-name {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.city-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: clamp(16px, 2.5vh, 24px);
+  font-weight: 500;
+}
+.city-thesis {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--ink-2);
+  line-height: 1.45;
+  margin-bottom: clamp(20px, 3vh, 28px);
+  padding-bottom: clamp(16px, 2.5vh, 24px);
+  border-bottom: 1px solid var(--line);
+}
+.city-plays {
+  list-style: none;
+  padding: 0;
+}
+.city-plays li {
+  font-size: clamp(13px, 1.05vw, 16px);
+  color: var(--ink-2);
+  padding: clamp(8px, 1.2vh, 12px) 0 clamp(8px, 1.2vh, 12px) 24px;
+  position: relative;
+  line-height: 1.5;
+  border-bottom: 1px dotted var(--line);
+}
+.city-plays li:last-child { border-bottom: 0; }
+.city-plays li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: clamp(10px, 1.4vh, 14px);
+  color: var(--red);
+  font-size: 11px;
+}
+.city-plays li strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   RISKS SECTION (NEW)
+============================================================ */
+.risks-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(8px, 1.5vh, 16px);
+}
+.risks-section h2 .accent { color: var(--red); }
+.risks-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  max-width: 820px;
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 40px);
+  line-height: 1.45;
+}
+.risks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 32px);
+}
+.risk {
+  background: var(--cream-light);
+  padding: clamp(22px, 2.8vh, 32px) clamp(22px, 2.4vw, 32px);
+  border-left: 3px solid var(--ink-4);
+  position: relative;
+}
+.risk.high { border-left-color: var(--red); }
+.risk.medium { border-left-color: var(--amber); }
+.risk.low { border-left-color: var(--slate); }
+.risk.risk-wide { grid-column: 1 / -1; }
+
+.risk-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: clamp(8px, 1.2vh, 12px);
+  gap: 16px;
+}
+.risk-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  font-weight: 500;
+}
+.risk-likelihood {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.risk.high .risk-likelihood { background: #fce8e6; color: var(--red-deep); }
+.risk.medium .risk-likelihood { background: var(--amber-bg); color: var(--amber); }
+.risk.low .risk-likelihood { background: var(--slate-bg); color: var(--slate); }
+
+.risk-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: clamp(10px, 1.5vh, 14px);
+}
+.risk-desc {
+  font-size: clamp(13px, 1.05vw, 15px);
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: clamp(14px, 2vh, 20px);
+}
+.risk-mitigation {
+  padding-top: clamp(12px, 1.6vh, 16px);
+  border-top: 1px solid var(--line);
+}
+.risk-mitigation-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.risk-mitigation-text {
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.risk-mitigation-text strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   90-DAY KPI SCORECARD
+============================================================ */
+.kpis-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(8px, 1.5vh, 16px);
+}
+.kpis-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 48px);
+  line-height: 1.45;
+  max-width: 760px;
+}
+.kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 32px);
+}
+.kpi {
+  padding: clamp(24px, 3vh, 36px) clamp(20px, 2vw, 32px);
+  background: var(--cream-light);
+  border-top: 3px solid var(--red);
+}
+.kpi-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.9vw, 12px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: clamp(12px, 1.8vh, 18px);
+  line-height: 1.4;
+  font-weight: 500;
+  min-height: 2.8em;
+}
+.kpi-value {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(56px, 7vw, 110px);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: clamp(12px, 1.5vh, 16px);
+  font-weight: 400;
+}
+.kpi-value .unit {
+  font-family: 'Anton', sans-serif;
+  color: var(--red);
+  font-size: 0.45em;
+  vertical-align: 0.45em;
+}
+.kpi-value .currency {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.6em;
+  vertical-align: 0.18em;
+  margin-right: 0.05em;
+}
+.kpi-detail {
+  font-size: clamp(11px, 0.95vw, 13px);
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+.kpi-basis {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  font-weight: 500;
+}
+.kpis-footnote {
+  margin-top: clamp(28px, 4vh, 48px);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-transform: none;
+}
+
+/* ============================================================
+   RECEIPTS
+============================================================ */
+.receipts-section h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(8px, 1.5vh, 16px);
+}
+.receipts-section .lead {
+  font-size: clamp(16px, 1.5vw, 22px);
+  color: var(--ink-2);
+  font-weight: 300;
+  margin-bottom: clamp(28px, 5vh, 40px);
+  line-height: 1.45;
+  max-width: 760px;
+}
+.legend {
+  display: flex;
+  gap: clamp(16px, 2vw, 32px);
+  flex-wrap: wrap;
+  padding: clamp(16px, 2vh, 24px) 0;
+  margin-bottom: clamp(20px, 3vh, 32px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.legend-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.legend-tag.cited { background: var(--green-bg); color: var(--green); }
+.legend-tag.assumed { background: var(--amber-bg); color: var(--amber); }
+.legend-tag.derived { background: #dceaf5; color: #1d4ed8; }
+.legend-tag.target { background: #f5d8d5; color: var(--red-deep); }
+
+ol.sources {
+  list-style: none;
+  padding: 0;
+  counter-reset: src;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(40px, 5vw, 80px);
+}
+ol.sources li {
+  counter-increment: src;
+  position: relative;
+  padding: clamp(10px, 1.5vh, 14px) 0 clamp(10px, 1.5vh, 14px) clamp(28px, 3vw, 40px);
+  font-size: clamp(11px, 1vw, 13px);
+  color: var(--ink-2);
+  line-height: 1.55;
+  border-bottom: 1px dotted var(--line);
+}
+ol.sources li::before {
+  content: counter(src, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: clamp(12px, 1.6vh, 16px);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.9vw, 12px);
+  color: var(--red);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+ol.sources li strong { color: var(--ink); font-weight: 600; }
+ol.sources li em { font-style: italic; color: var(--ink-3); }
+
+/* ============================================================
+   CLOSING (dark)
+============================================================ */
+.closing .section-body { justify-content: center; }
+.closing h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(56px, 11vw, 180px);
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: clamp(28px, 5vh, 56px);
+}
+.closing h2 .accent { color: var(--red); display: block; }
+.closing .subtitle {
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 300;
+  color: rgba(245,240,230,0.75);
+  max-width: 760px;
+  line-height: 1.45;
+  margin-bottom: clamp(40px, 6vh, 72px);
+}
+.closing-contact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 4vw, 60px);
+  padding-top: clamp(24px, 4vh, 40px);
+  border-top: 1px solid rgba(245,240,230,0.15);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(10px, 0.95vw, 12px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245,240,230,0.55);
+}
+.closing-contact strong {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(245,240,230,0.4);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+}
+.closing-contact .value {
+  color: var(--cream-light);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+  .editorial { grid-template-columns: 1fr; gap: 32px; }
+  .statement { grid-template-columns: 1fr; gap: 32px; }
+  .quote-section { grid-template-columns: 1fr; gap: 32px; }
+  .markets-grid { grid-template-columns: 1fr; }
+  .channel { grid-template-columns: 72px 1fr; gap: 16px; }
+  .channel-stat { grid-column: 2; }
+  .venue-row { grid-template-columns: 1fr; gap: 8px; }
+  .worked-grid { grid-template-columns: 1fr; gap: 32px; }
+  .diagnosis { grid-template-columns: 1fr; gap: 16px; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .cities-grid { grid-template-columns: 1fr; }
+  .risks-grid { grid-template-columns: 1fr; }
+  .kpis-grid { grid-template-columns: 1fr 1fr; }
+  ol.sources { grid-template-columns: 1fr; }
+  .closing-contact { grid-template-columns: 1fr; gap: 24px; }
+  .cover-meta { gap: 24px; }
+  .section { padding: 60px 24px 40px; }
+}
+
+@media (max-width: 600px) {
+  .kpis-grid { grid-template-columns: 1fr; }
+  table.scorecard { font-size: 11px; }
+  table.scorecard th, table.scorecard td { padding: 12px 4px; }
+  table.terms td:first-child { width: auto; }
+}
+
+@page { size: A4 landscape; margin: 0; }
+@media print {
+  html, body { background: white; }
+  .progress-track { display: none; }
+  .section { page-break-after: always; min-height: 0; height: 297mm; width: 420mm; max-height: 210mm; padding: 12mm 18mm; }
+  .section:last-child { page-break-after: auto; }
+  .section-dark, .section-red { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="progress-track"><div class="progress-bar" id="progress"></div></div>
+
+<!-- ============================================================
+     01 · COVER
+============================================================ -->
+<section class="section section-dark cover">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology · est. 2020</span></div>
+    <div class="section-id">May 2026 · For Dr. Renita Rajan</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow" style="margin-bottom: 16px;">A 30 · 60 · 90 — Day Plan · One View</div>
+    <div class="display-stack">
+      <h1>CHOSEN<span class="comma">,</span><br>BEYOND<br>EGMORE<span class="accent">.</span></h1>
+      <p class="subtitle">One view of how CHOSEN's offline footprint could grow over the next ninety days, built from public research and stated assumptions.</p>
+      <div class="cover-meta">
+        <div>Prepared by <strong>Harsh Jain Ashok</strong></div>
+        <div>Mesa School of Business <strong>PGP'26</strong></div>
+        <div>Reading time <strong>~10 minutes</strong></div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>An Offline Partnerships Playbook</span>
+    <span>01 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     02 · THE NOTE
+============================================================ -->
+<section class="section editorial-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">00 · The Note</div>
+  </header>
+  <div class="section-body editorial">
+    <div class="editorial-left">
+      <span class="eyebrow editorial-eyebrow">00 · The Note</span>
+      <h2>A playbook,<br>not a pitch<span class="accent">.</span></h2>
+    </div>
+    <div class="editorial-right">
+      <p>Dr. Rajan — this is one view of a 90-day plan for taking CHOSEN's offline presence beyond the Egmore flagship. Built from public research, not internal data.</p>
+      <p>Every projected figure that follows traces to either a cited source, a derivation, or an assumption with its basis stated. The underlying read of the research is straightforward: <strong>CHOSEN appears to have built more clinical authority than physical presence.</strong> The playbook proposes one way to close that gap, starting in the city the brand already operates in.</p>
+      <p class="pull">Not a critique. A starting point for a conversation.</p>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>The Note</span>
+    <span>02 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     02.5 · ASSUMPTIONS · NEW
+============================================================ -->
+<section class="section assumptions-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">00.25 · What This Playbook Assumes</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">00.25 · What This Playbook Assumes</div>
+    <h2 class="assumptions-h2">Three premises. <span class="accent">Stated upfront</span>.</h2>
+    <p class="assumptions-lead">The plan that follows depends on the three assumptions below. If any of them is wrong, the playbook needs rethinking. Worth a conversation before reading further.</p>
+    <div class="assumptions-list">
+      <div class="assumption">
+        <div class="assumption-id">A-01</div>
+        <div class="assumption-body">
+          <div class="assumption-title">CHOSEN's Q2–Q3 priorities include domestic offline expansion.</div>
+          <div class="assumption-note">Public Series A coverage names R&amp;D, the Centre of Excellence and LatAm / East Asia expansion. Domestic offline is not specifically named.</div>
+        </div>
+      </div>
+      <div class="assumption">
+        <div class="assumption-id">A-02</div>
+        <div class="assumption-body">
+          <div class="assumption-title">The founder's personal Instagram is deployable with consent.</div>
+          <div class="assumption-note">Several activations in this plan reference Dr. Rajan's 256K-follower account as a launch lever. Deployment remains a founder decision.</div>
+        </div>
+      </div>
+      <div class="assumption">
+        <div class="assumption-id">A-03</div>
+        <div class="assumption-body">
+          <div class="assumption-title">Internal pipelines may already cover work not in the public record.</div>
+          <div class="assumption-note">This playbook works from public sources only. Pilots, partnerships or city launches in progress internally would change the sequencing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>What This Playbook Assumes</span>
+    <span>03 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     03 · WHAT THE RESEARCH SUGGESTS
+============================================================ -->
+<section class="section editorial-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">00.5 · What The Research Suggests</div>
+  </header>
+  <div class="section-body editorial">
+    <div class="editorial-left">
+      <span class="eyebrow editorial-eyebrow">00.5 · What The Research Suggests</span>
+      <h2>One pattern across six years of <span class="accent">public record</span>.</h2>
+    </div>
+    <div class="editorial-right">
+      <p>Across the Series A coverage, founder interviews, the Instagram presence, and the singular Egmore flagship, the same picture appears to emerge. CHOSEN reads as a clinical skincare brand of national consequence, while operating largely as a Chennai-based DTC.</p>
+      <p>The publicly cited Rx network counts <strong>over two thousand prescribing clinics</strong>, with one branded retail space. The combined founder + brand social audience approaches <strong>three hundred and twenty thousand followers</strong>, with no formal activations at the hotels, members clubs, or IT-corridor wellness programmes the founder has named publicly as B2B priorities.</p>
+      <p class="pull">Three gaps appear consistently. All look addressable within ninety days.</p>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>What The Research Suggests</span>
+    <span>04 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     04 · PART I DIVIDER
+============================================================ -->
+<section class="section section-red divider">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">Part One · The Research</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">Part One</div>
+    <h2 class="display">Three<br>Gaps<span style="color: var(--cream-light);">.</span></h2>
+    <p class="subtitle">Three patterns across the public record. None concern the product. All concern the rooms the products could be in.</p>
+  </div>
+  <footer class="section-footer">
+    <span>Three Gaps</span>
+    <span>05 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     05 · GAP 01 · 2,000 CLINICS
+============================================================ -->
+<section class="section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">01 · The First Gap</div>
+  </header>
+  <div class="section-body statement">
+    <div>
+      <div class="eyebrow" style="margin-bottom: 24px;">01 · The First Gap</div>
+      <div class="statement-num">2,000<span class="small">+</span></div>
+      <div class="statement-label">Prescribing clinics nationally<br>· One branded retail space</div>
+    </div>
+    <div class="statement-right">
+      <h3>The Rx network may be a retail engine in waiting.</h3>
+      <p>Roughly two thousand dermatologists prescribe CHOSEN today. Their patients typically leave a consultation problem-aware, with a brand and a product in mind. Few of those patients currently walk past a CHOSEN counter on the way out of the clinic.</p>
+      <p><strong>A small branded shelf inside fifty high-prescribing clinics across five metros</strong> could compound the Rx loop into recurring shelf revenue, at an estimated CapEx of ₹35–60K per corner. This is the lowest-CapEx, highest-fit channel in the playbook — and the recommended lead move.</p>
+      <div class="statement-source">
+        <span class="source-tag">cited</span>Inc42, March 2026 · Series A coverage, May 2026
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Gap 01 · The Rx Network</span>
+    <span>06 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     06 · GAP 02 · 4× FOUNDER REACH
+============================================================ -->
+<section class="section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">02 · The Second Gap</div>
+  </header>
+  <div class="section-body statement">
+    <div>
+      <div class="eyebrow" style="margin-bottom: 24px;">02 · The Second Gap</div>
+      <div class="statement-num">4×</div>
+      <div class="statement-label">Founder reach vs. brand reach<br>· 256K vs 64K Instagram followers</div>
+    </div>
+    <div class="statement-right">
+      <h3>Dr. Rajan's personal handle is the brand's largest organic asset. Deployment remains a founder decision.</h3>
+      <p><strong>@drrenitarajan</strong> commands 256,000 followers. <strong>@chosen_by_dermatology</strong> commands 64,000. For city-launch announcements, Dr. Rajan's personal handle appears to carry the broadest credible reach in Indian clinical dermatology.</p>
+      <p>If deployed for geographic launches, a founder reel from the personal handle would reach roughly four times the audience of the same reel from the brand handle, at no paid cost. This remains a founder discretion call, not a default marketing assumption.</p>
+      <div class="statement-source">
+        <span class="source-tag">cited</span>Instagram · @drrenitarajan and @chosen_by_dermatology, May 2026
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Gap 02 · The Founder Asset</span>
+    <span>07 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     07 · GAP 03 · HOSPITALITY
+============================================================ -->
+<section class="section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">03 · The Third Gap</div>
+  </header>
+  <div class="section-body quote-section">
+    <div class="quote-card">
+      <div class="eyebrow" style="margin-bottom: 24px;">03 · The Third Gap</div>
+      <p class="quote-text">"Hospitality, health, travel, leisure — the next B2B verticals we want to grow into."</p>
+      <div class="quote-attr"><strong>Dr. Renita Rajan</strong>Campaign India · 2025</div>
+    </div>
+    <div class="statement-right">
+      <h3>Named publicly. Not yet visibly activated.</h3>
+      <p>Roughly eighteen months after the Campaign India interview, the public record does not surface any formal hotel or members-club partnership. (Internal pilots may of course exist that have not been disclosed.)</p>
+      <p>Chennai alone has five hotels in CHOSEN's price-and-trust register — ITC Grand Chola, Park Hyatt, Leela Palace, Hyatt Regency and Taj Coromandel. The Park Hyatt pilot proposed in section 13 is suggested as one entry move worth testing.</p>
+      <div class="statement-source">
+        <span class="source-tag">cited</span>Campaign India · "Chosen targets 10% share of sunscreens by 2030"
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Gap 03 · The Hospitality Whitespace</span>
+    <span>08 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     08 · CHENNAI WHITESPACE
+============================================================ -->
+<section class="section markets-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">04 · Before Radiating Out</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">04 · Before Radiating Out</div>
+    <h2>Even Chennai itself <span class="accent">may be whitespace</span>.</h2>
+    <p class="lead">Egmore is one of six affluent micro-markets in the city. The other five could be deepened before any other city is touched. Phase I proposes doing that work first.</p>
+    <div class="markets-grid">
+      <div class="market flagship">
+        <div class="market-id">M-01 · <span class="badge">Flagship</span></div>
+        <div class="market-name">Egmore</div>
+        <div class="market-desc">Existing Canberra House store. Already converting. Continues as the rehearsal venue for new activation formats.</div>
+      </div>
+      <div class="market">
+        <div class="market-id">M-02</div>
+        <div class="market-name">Anna Nagar &amp; Mogappair</div>
+        <div class="market-desc">Largest affluent residential cluster in north Chennai. High derm-awareness, weak premium modern-trade beauty footprint.</div>
+      </div>
+      <div class="market">
+        <div class="market-id">M-03</div>
+        <div class="market-name">Adyar &amp; Besant Nagar</div>
+        <div class="market-desc">Coastal premium. High density of cosmetic-derm clinics outside Egmore. ECR corridor access.</div>
+      </div>
+      <div class="market">
+        <div class="market-id">M-04</div>
+        <div class="market-name">OMR &amp; Sholinganallur</div>
+        <div class="market-desc">IT corridor. Captive 30–45 working women cohort central to CHOSEN's stated ICP, with limited current touchpoint.</div>
+      </div>
+      <div class="market">
+        <div class="market-id">M-05</div>
+        <div class="market-name">Nungambakkam &amp; KNK Road</div>
+        <div class="market-desc">Luxury retail corridor. Amethyst, designer boutiques, Park Hyatt — premium-aware foot traffic.</div>
+      </div>
+      <div class="market">
+        <div class="market-id">M-06</div>
+        <div class="market-name">ECR &amp; Kelambakkam</div>
+        <div class="market-desc">Weekend wellness corridor. Resort hotels, gated community pockets — natural Skin Drinks and TOR Collagen fit.</div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Chennai · Six Micro-Markets</span>
+    <span>09 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     09 · PART II DIVIDER
+============================================================ -->
+<section class="section section-red divider">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">Part Two · The Plan</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">Part Two</div>
+    <h2 class="display">A 90-Day<br>Plan<span style="color: var(--cream-light);">.</span></h2>
+    <p class="subtitle">Deepen Chennai. Build the operating system. Radiate to Bangalore and Pune. One sequence, four channels, four risks acknowledged.</p>
+  </div>
+  <footer class="section-footer">
+    <span>A 90-Day Plan</span>
+    <span>10 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     10 · PHASE I · PRIORITISED CHANNELS (REBUILT)
+============================================================ -->
+<section class="section phase-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">05 · Phase I · Days 01–30</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">05 · Phase I · Days 01 — 30</div>
+    <h2>Four channels. <span class="accent">Prioritised, not menued</span>.</h2>
+    <p class="phase-lead">All four channels could work. Sequencing them by Rx-intent, CapEx and conversion-fit suggests one channel to lead with, one to build alongside it, one to test once those are proven, and one to defer until the operating model is validated. The colour band on each row signals the recommended posture.</p>
+    <div class="channels-list">
+
+      <div class="channel tier-lead">
+        <div class="channel-rank">
+          <div class="rank-num">1<span class="ord">st</span></div>
+          <div class="rank-label">Lead</div>
+        </div>
+        <div class="channel-info">
+          <div class="channel-name">Dermatologist clinic experience corners</div>
+          <div class="channel-desc">Branded shelf installation inside a partner clinic, positioned post-consultation. Includes ₹150 SAFESCREEN minis as Rx-paired gift.</div>
+          <div class="channel-reason">Rx intent pre-built · lowest CapEx · highest projected ROI in the worked example (~4.4× vs ~2× for hotel).</div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">CapEx · Assumed</div>
+          <div class="stat-value">₹35–60K<div class="stat-sub">per corner</div></div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">Conversion fit</div>
+          <div class="stat-value">Highest<div class="stat-sub">Rx intent pre-built</div></div>
+        </div>
+      </div>
+
+      <div class="channel tier-build">
+        <div class="channel-rank">
+          <div class="rank-num">2<span class="ord">nd</span></div>
+          <div class="rank-label">Build</div>
+        </div>
+        <div class="channel-info">
+          <div class="channel-name">Members clubs &amp; curated lifestyle retail</div>
+          <div class="channel-desc">Private member evenings at city clubs. Curated stockist placement at Amethyst, Anokhi-adjacent retail.</div>
+          <div class="channel-reason">Audience appears to match the stated ICP closely · barter-able terms reduce cash exposure · trust velocity is high.</div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">CapEx · Assumed</div>
+          <div class="stat-value">₹60K–1L<div class="stat-sub">per event</div></div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">Conversion fit</div>
+          <div class="stat-value">High<div class="stat-sub">trust velocity high</div></div>
+        </div>
+      </div>
+
+      <div class="channel tier-test">
+        <div class="channel-rank">
+          <div class="rank-num">3<span class="ord">rd</span></div>
+          <div class="rank-label">Test</div>
+        </div>
+        <div class="channel-info">
+          <div class="channel-name">Premium hotel wellness installations</div>
+          <div class="channel-desc">4-week installation in spa or F&amp;B zone. In-room mini-SPF amenity. Anchor event: a masterclass hosted by Dr. Rajan.</div>
+          <div class="channel-reason">Brand-equity build &gt; revenue · highest CapEx · slowest legal cycle · proposed only after clinic corners prove the model.</div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">CapEx · Assumed</div>
+          <div class="stat-value">₹1.2–2L<div class="stat-sub">per installation</div></div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">Conversion fit</div>
+          <div class="stat-value">Medium<div class="stat-sub">leisure-mode guests</div></div>
+        </div>
+      </div>
+
+      <div class="channel tier-defer">
+        <div class="channel-rank">
+          <div class="rank-num">4<span class="ord">th</span></div>
+          <div class="rank-label">Defer</div>
+        </div>
+        <div class="channel-info">
+          <div class="channel-name">IT-corridor corporate wellness</div>
+          <div class="channel-desc">Executive skincare kits sold via HR wellness programmes. Lunch-and-learn led by a partner dermatologist.</div>
+          <div class="channel-reason">Recommended to wait until tiers 1–3 prove the operating model · founder bandwidth could become a binding constraint.</div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">CapEx · Assumed</div>
+          <div class="stat-value">₹40–80K<div class="stat-sub">per programme</div></div>
+        </div>
+        <div class="channel-stat">
+          <div class="stat-label">Conversion fit</div>
+          <div class="stat-value">Moderate<div class="stat-sub">strong repeat potential</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Phase I · Prioritised Channels</span>
+    <span>11 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     11 · NAMED VENUES (REORDERED · CLINICS FIRST)
+============================================================ -->
+<section class="section venues-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">06 · Named Openers</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">06 · Named Openers</div>
+    <h2 style="font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 72px); text-transform: uppercase; font-weight: 400; line-height: 0.95; letter-spacing: -0.01em; margin: 24px 0 16px;">An opening shortlist for <span style="color: var(--red);">outreach</span>.</h2>
+    <p class="lead">Named properties, in the order the prioritisation suggests approaching them. Clinic corners and members clubs first; hotels staged later; corporate deferred to Phase II.</p>
+    <div class="venues-list">
+      <div class="venue-row">
+        <div class="venue-label">Clinics<span class="tier-mark">1st · Lead</span></div>
+        <div class="venue-list-text">
+          <strong>Dr. Lakshmi Eye &amp; Skin Centre</strong> (Anna Nagar) · <strong>Apollo Cosmetic Clinics</strong> (Greams Road, OMR) · <strong>Twacha Skin Care</strong> (Adyar) · <strong>Soundarya Dermatology</strong> (T. Nagar)
+          <span class="recommend">Suggested openers — a longer list could be drawn from the existing 2,000-clinic Rx network, prioritising the highest-prescribing partners.</span>
+        </div>
+      </div>
+      <div class="venue-row">
+        <div class="venue-label">Members clubs<span class="tier-mark">2nd · Build</span></div>
+        <div class="venue-list-text">
+          <strong>Madras Boat Club</strong> (Adyar) · <strong>Madras Cricket Club</strong> (Chepauk) · <strong>The Gymkhana Club</strong>
+          <span class="recommend">Proposed as a wellness-evening series, not as transactional pop-ups.</span>
+        </div>
+      </div>
+      <div class="venue-row">
+        <div class="venue-label">Curated retail<span class="tier-mark">2nd · Build</span></div>
+        <div class="venue-list-text">
+          <strong>Amethyst</strong> (Royapettah) · <strong>Anokhi</strong> (KNK Road) · <strong>The Folly at Amethyst</strong> for a Margazhi-season activation · <strong>Phoenix Marketcity Velachery</strong> for a Skin Drinks experiential pod
+        </div>
+      </div>
+      <div class="venue-row">
+        <div class="venue-label">Hotels<span class="tier-mark">3rd · Test</span></div>
+        <div class="venue-list-text">
+          <strong>ITC Grand Chola</strong> (Guindy) · <strong>Park Hyatt Chennai</strong> (Velachery) · <strong>The Leela Palace</strong> (MRC Nagar) · <strong>Hyatt Regency</strong> (Anna Salai) · <strong>Taj Coromandel</strong> (Nungambakkam)
+          <span class="recommend">Park Hyatt suggested as the first pilot — younger F&amp;B clientele, more agile contracting process than the legacy properties. Recommended to approach only after two clinic corners are operational.</span>
+        </div>
+      </div>
+      <div class="venue-row">
+        <div class="venue-label">Corporate<span class="tier-mark">4th · Defer</span></div>
+        <div class="venue-list-text">
+          <strong>TCS Siruseri</strong> · <strong>Infosys Mahindra City</strong> · <strong>Cognizant Sholinganallur</strong> · <strong>Zoho Estancia</strong>
+          <span class="recommend">Best approached via women's-wellness ERGs already active on these campuses; deferred to Phase II once the operating system is in place.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Named Openers</span>
+    <span>12 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     12 · OPENING PITCH (dark · context-reframed)
+============================================================ -->
+<section class="section section-dark pitch-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">07 · The Tier-3 Pilot Pitch</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">07 · The Tier-3 Pilot Pitch</div>
+    <h2>Park Hyatt Chennai. <span class="accent">F&amp;B Director.</span></h2>
+    <p class="pitch-context">The hotel pilot sits at tier 3 of the channel ladder, recommended only once two clinic corners are operational. The Park Hyatt is proposed because younger F&amp;B clientele and a more agile contracting process should reduce the legal cycle. The pitch below is an example, not a sent letter.</p>
+    <div class="pitch-card">
+      <div class="pitch-subject"><span class="subject-to">Subject ·</span> &nbsp;A four-week wellness installation. No rent expected.</div>
+      <div class="pitch-block">
+        <div class="block-label">Opening</div>
+        <div class="block-text">Dr. Renita Rajan's CHOSEN is one of the few Indian skincare brands with peer-reviewed clinical publications and India's first Melanin Lab. The brand has not yet partnered with a hotel in Chennai. We believe the Park Hyatt would be the right first one.</div>
+      </div>
+      <div class="pitch-block">
+        <div class="block-label">Our proposal</div>
+        <div class="block-text">A four-week installation in the spa lounge — a curated three-SKU display (SAFESCREEN, Re(d)covery, TOR Collagen), an in-room ₹150 mini-SPF amenity for sixty rooms across fourteen days, and one Saturday-evening masterclass — <em>"Skin Drinks &amp; Sun Protection"</em> — hosted by Dr. Rajan in person.</div>
+      </div>
+      <div class="pitch-block">
+        <div class="block-label">Our ask</div>
+        <div class="block-text">Use of eight square feet in the spa lounge. Two house-list emails to spa members. Permission for the in-room amenity.</div>
+      </div>
+      <div class="pitch-block">
+        <div class="block-label">Our give</div>
+        <div class="block-text">15% revenue share on all in-house sales during the window. Complimentary CHOSEN gift kits for the spa team (~₹40,000 retail value). Subject to founder consent, a co-branded reel from Dr. Rajan's personal account. <em>For the Park Hyatt brand, this could read as wellness positioning at low acquisition cost.</em></div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>The Tier-3 Pilot Pitch</span>
+    <span>13 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     13 · TERMS FRAMEWORK
+============================================================ -->
+<section class="section terms-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">08 · What Could Go On The Table</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">08 · What Could Go On The Table</div>
+    <h2 style="font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 72px); text-transform: uppercase; font-weight: 400; line-height: 0.95; letter-spacing: -0.01em; margin: 24px 0 16px;">Four terms models. <span style="color: var(--red);">Default first</span>.</h2>
+    <p class="lead">A working toolkit. Each model lists the venue type it tends to suit and the risk it tends to carry.</p>
+    <table class="terms">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Tends to suit</th>
+          <th>Our ask</th>
+          <th>Risk profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="default">
+          <td>Revenue share, no floor</td>
+          <td class="when">Default</td>
+          <td>15–20% of net in-venue sales · no minimum guarantee · CHOSEN covers collateral and staff</td>
+          <td>Low — venue carries no downside</td>
+        </tr>
+        <tr>
+          <td>Flat-fee activation</td>
+          <td class="when">Premium hotels</td>
+          <td>₹40–80K for 2–4 weeks · CHOSEN retains 100% of sales</td>
+          <td>Medium — best reserved for exceptional brand-fit</td>
+        </tr>
+        <tr>
+          <td>Hybrid (floor + share)</td>
+          <td class="when">Repeat partner</td>
+          <td>₹20K base + 10% above ₹1 lakh in sales</td>
+          <td>Low — earns trust for a second cycle</td>
+        </tr>
+        <tr>
+          <td>Barter / amenity</td>
+          <td class="when">Spas, clubs</td>
+          <td>In-room mini-SPF amenity in exchange for masterclass slot + member emails</td>
+          <td>Lowest — no cash exchange</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="section-footer">
+    <span>Terms Framework</span>
+    <span>14 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     14 · TRACKER · WORKED EXAMPLE
+============================================================ -->
+<section class="section tracker-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">09 · Phase II · Instrument Every Activation</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">09 · Phase II · Days 31 — 60</div>
+    <h2 style="font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 72px); text-transform: uppercase; font-weight: 400; line-height: 0.95; letter-spacing: -0.01em; margin: 24px 0 32px;">The tracker, <span style="color: var(--red);">one row per cycle</span>.</h2>
+    <div class="worked-header">
+      <span><strong>Park Hyatt Chennai</strong> · projected 4-week spa-lounge installation · cycle 01</span>
+      <span>Tag definitions on page 21</span>
+    </div>
+    <div class="worked-grid">
+      <div class="worked-col">
+        <h4>Revenue (projected)</h4>
+        <div class="worked-line"><span class="w-label">Spa &amp; F&amp;B walk-in footfall</span><span class="w-val">820</span></div>
+        <div class="worked-line"><span class="w-label">Mini-SPF samples distributed</span><span class="w-val">410</span></div>
+        <div class="worked-line"><span class="w-label">Qualified consults (≥ 3 min)</span><span class="w-val">88</span></div>
+        <div class="worked-line"><span class="w-label">In-venue stall sales</span><span class="w-val">₹52,000</span></div>
+        <div class="worked-line"><span class="w-label">QR-tracked 14-day sales</span><span class="w-val">₹62,500</span></div>
+        <div class="worked-line total"><span class="w-label">Gross revenue</span><span class="w-val">₹1,14,500</span></div>
+      </div>
+      <div class="worked-col">
+        <h4>Cost (projected)</h4>
+        <div class="worked-line"><span class="w-label">Setup &amp; collateral</span><span class="w-val">₹22,000</span></div>
+        <div class="worked-line"><span class="w-label">Sample inventory at COGS</span><span class="w-val">₹14,000</span></div>
+        <div class="worked-line"><span class="w-label">Masterclass production</span><span class="w-val">₹12,000</span></div>
+        <div class="worked-line"><span class="w-label">Staff (4 weeks, 1 brand ambassador)</span><span class="w-val">₹10,000</span></div>
+        <div class="worked-line"><span class="w-label">Total cost</span><span class="w-val">₹58,000</span></div>
+        <div class="worked-line total"><span class="w-label">Projected ROI · suggested verdict</span><span class="w-val">~1.97× · Diagnose</span></div>
+      </div>
+    </div>
+    <div class="diagnosis">
+      <div><strong>The likely diagnosis.</strong> Footfall looks healthy on paper, but the projected consult-conversion rate (88 / 410 ≈ 21%) would sit below the clinic-channel benchmark of around 42%. The hypothesis: spa guests typically arrive in leisure mode, not problem-aware mode.</div>
+      <div><strong>A possible Cycle 2 correction.</strong> Swap the Saturday-evening masterclass for a weekday-morning "post-summer pigmentation" consult co-hosted with a partner dermatologist. Projected CPQC could move from ~₹659 to ~₹420; projected ROI from ~1.97× to ~2.6×, which would meet the Renew threshold.</div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>The Tracker · Worked Example</span>
+    <span>15 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     15 · DECISION RULES
+============================================================ -->
+<section class="section rules-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">10 · Decide Like A System</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">10 · Decide Like A System</div>
+    <h2 style="font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 72px); text-transform: uppercase; font-weight: 400; line-height: 0.95; letter-spacing: -0.01em; margin: 24px 0 16px;">Renew. Diagnose. <span style="color: var(--red);">Drop</span>.</h2>
+    <p class="lead">Three rules to keep renewal decisions evidence-led rather than relationship-led. Thresholds are starting proposals — likely to be re-calibrated after Phase I week-4 actuals.</p>
+    <div class="rules-grid">
+      <div class="rule">
+        <div class="rule-name">Renew</div>
+        <div class="rule-tagline">Earn a second cycle</div>
+        <div class="rule-lines">
+          <div class="rule-line"><span class="key">ROI</span><span>≥ 2.0× over two cycles</span></div>
+          <div class="rule-line"><span class="key">CPQC</span><span>≤ ₹600 per qualified consult</span></div>
+          <div class="rule-line"><span class="key">Repeat</span><span>≥ 20% Rx-buy repeat rate</span></div>
+          <div class="rule-line"><span class="key">Fit</span><span>Dr. Rajan brand-fit sign-off</span></div>
+        </div>
+      </div>
+      <div class="rule diagnose">
+        <div class="rule-name">Diagnose</div>
+        <div class="rule-tagline">One corrective cycle</div>
+        <div class="rule-lines">
+          <div class="rule-line"><span class="key">ROI</span><span>1.0× — 1.9×</span></div>
+          <div class="rule-line"><span class="key">Action</span><span>Adjust SKU mix, masterclass timing, or sample-to-consult ratio</span></div>
+          <div class="rule-line"><span class="key">Esc.</span><span>If no lift in cycle 2, downgrade to Drop</span></div>
+        </div>
+      </div>
+      <div class="rule drop">
+        <div class="rule-name">Drop</div>
+        <div class="rule-tagline">Close the partnership</div>
+        <div class="rule-lines">
+          <div class="rule-line"><span class="key">ROI</span><span>&lt; 1.0× after one full cycle</span></div>
+          <div class="rule-line"><span class="key">CPQC</span><span>&gt; ₹1,200</span></div>
+          <div class="rule-line"><span class="key">Fit</span><span>Audience mismatch — mass-mall footfall, low derm-awareness, off-ICP age band</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Decision Rules</span>
+    <span>16 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     16 · CITY SCORECARD
+============================================================ -->
+<section class="section scorecard-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">11 · Phase III · Days 61–90</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">11 · Phase III · Days 61 — 90</div>
+    <h2>Two cities. <span class="accent">Five axes</span>.</h2>
+    <p class="lead">A case for choosing a smaller second city, rather than Mumbai or Delhi, runs as follows. <strong>Bangalore</strong> is proposed first, on the warm ground of CHOSun Conclave 2024 and operational adjacency. <strong>Pune</strong> is proposed second, sequenced after Bangalore activations meet renew thresholds — Pune is cold ground and high-variance, and committing to it in parallel would be brittle.</p>
+    <table class="scorecard">
+      <thead>
+        <tr>
+          <th style="width: 18%;">City</th>
+          <th>Derm-aware<br>ICP density</th>
+          <th>Brand<br>warm-up</th>
+          <th>Ops reach<br>from CHN</th>
+          <th>Competitor<br>whitespace</th>
+          <th>Test<br>fidelity</th>
+          <th>Total / 25</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pick">
+          <td>Bangalore</td><td>5</td><td>4</td><td>5</td><td>3</td><td>3</td><td class="total">20</td>
+        </tr>
+        <tr class="pick">
+          <td>Pune</td><td>4</td><td>1</td><td>3</td><td>5</td><td>5</td><td class="total">18</td>
+        </tr>
+        <tr>
+          <td>Hyderabad</td><td>4</td><td>2</td><td>4</td><td>3</td><td>3</td><td class="total">16</td>
+        </tr>
+        <tr>
+          <td>Mumbai</td><td>5</td><td>2</td><td>2</td><td>2</td><td>2</td><td class="total">13</td>
+        </tr>
+        <tr>
+          <td>Delhi NCR</td><td>5</td><td>2</td><td>2</td><td>2</td><td>2</td><td class="total">13</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="scorecard-note">
+      <strong>Axis definitions ·</strong> Derm-aware ICP density · concentration of women 30–50 with derm engagement. Brand warm-up · prior activations, press or community presence. Ops reach · feasibility of weekly founder visits and inventory turnaround from Chennai. Competitor whitespace · absence of clinical-DTC competitors with offline presence. Test fidelity · how cleanly success or failure reads as a model-validation signal, free of warm-up bias or competitor noise. <br><br><strong>On Mumbai &amp; Delhi ·</strong> Both could be the right Year-1 expansions, rather than 30-day pilots. The Derma Co. opened its first EBO in Gurugram on 30 January 2025; Mumbai is likely where the next wave of clinical-DTC competition will play out. Entering those markets from a tested operating model would likely carry less risk than entering them as first cities.
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>City Scorecard</span>
+    <span>17 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     17 · CITY PLAYS
+============================================================ -->
+<section class="section cities-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">12 · What Phase III Could Look Like</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">12 · What Phase III Could Look Like</div>
+    <h2>Same channel order. <span class="accent">Different anchors</span>.</h2>
+    <div class="cities-grid">
+      <div class="city">
+        <div class="city-sequence active">Days 61 — 75 · Active</div>
+        <div class="city-name">Bangalore</div>
+        <div class="city-tag">Warm · CHOSun '24 alumni already exist</div>
+        <div class="city-thesis">"Reactivate the people who already chose CHOSEN once. Then expand the room they walked into."</div>
+        <ul class="city-plays">
+          <li><strong>Reactivation evening</strong> — re-invite all CHOSun Conclave 2024 attendees to a Skin Drinks salon at <strong>Taj West End</strong></li>
+          <li><strong>Three clinic corners</strong> in Indiranagar, Whitefield and Koramangala, sourced from the existing Rx-network database</li>
+          <li><strong>One members club</strong> evening at Quorum Bangalore with Dr. Rajan in person</li>
+          <li><strong>One ORR corporate pilot</strong> at Manyata Tech Park or Bagmane via a women's-ERG anchor</li>
+        </ul>
+      </div>
+      <div class="city">
+        <div class="city-sequence conditional">Days 76 — 90 · Conditional · Pending Bangalore Cycle 1</div>
+        <div class="city-name">Pune</div>
+        <div class="city-tag">Cold · Greenfield, model-integrity test</div>
+        <div class="city-thesis">"Pune would be sequenced after Bangalore activations meet renew thresholds. If Bangalore Cycle 1 underperforms, Pune defers to Q2 and the team consolidates the existing Chennai + Bangalore footprint instead."</div>
+        <ul class="city-plays">
+          <li><strong>Two clinic corners</strong> — Skinology (FC Road) and Cosmoderma (Koregaon Park); lowest-CapEx openers</li>
+          <li><strong>One hospitality pilot</strong> at <strong>Conrad Pune</strong> — spa partnership with a weekend founder visit</li>
+          <li><strong>One wellness retreat</strong> — <strong>Atmantan</strong> welcome-kit sample placement, longevity SKU positioning</li>
+          <li><strong>One IT-corridor pilot</strong> in Hinjewadi — executive kits via Infosys or Persistent HR</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Bangalore + Pune Plays</span>
+    <span>18 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     18 · IMPLEMENTATION RISKS (NEW)
+============================================================ -->
+<section class="section risks-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">13 · What Could Go Wrong</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">13 · What Could Go Wrong</div>
+    <h2>Four implementation risks. <span class="accent">Mitigations stated</span>.</h2>
+    <p class="lead">A plan without a risk register is a wish-list. The four points below are the most likely places this playbook could break, with the contingencies recommended at the start of execution rather than after.</p>
+    <div class="risks-grid">
+
+      <div class="risk medium">
+        <div class="risk-head">
+          <div class="risk-num">R-01 · Partner reluctance</div>
+          <div class="risk-likelihood">Medium</div>
+        </div>
+        <div class="risk-title">Clinics may resist a branded counter.</div>
+        <div class="risk-desc">Some dermatologists could perceive a CHOSEN shelf as endorsing one brand over the broader prescription set, especially in clinics that prescribe a mix of brands.</div>
+        <div class="risk-mitigation">
+          <div class="risk-mitigation-label">Mitigation</div>
+          <div class="risk-mitigation-text">Lead with the <strong>10 highest-prescribing CHOSEN clinics</strong> — relationships are already warm. Offer revenue share with complimentary inventory rotation rather than a flat placement fee. Keep all arrangements non-exclusive so the clinic can still recommend other brands when clinically appropriate.</div>
+        </div>
+      </div>
+
+      <div class="risk high">
+        <div class="risk-head">
+          <div class="risk-num">R-02 · Founder bandwidth</div>
+          <div class="risk-likelihood">High</div>
+        </div>
+        <div class="risk-title">The model leans heavily on Dr. Rajan's in-person time.</div>
+        <div class="risk-desc">The Park Hyatt masterclass, the Bangalore reactivation evening and the Pune Conrad visit each suggest a founder appearance — three in-person events across two cities within ninety days is operationally demanding.</div>
+        <div class="risk-mitigation">
+          <div class="risk-mitigation-label">Mitigation</div>
+          <div class="risk-mitigation-text">Cap founder visits at <strong>one per month</strong>. Train a senior partner-dermatologist to lead all non-founder activations, opened by a pre-recorded Dr. Rajan video introduction so the brand voice remains consistent.</div>
+        </div>
+      </div>
+
+      <div class="risk medium">
+        <div class="risk-head">
+          <div class="risk-num">R-03 · Hotel-channel conversion</div>
+          <div class="risk-likelihood">Medium</div>
+        </div>
+        <div class="risk-title">Hotel CPQC could run higher than projected.</div>
+        <div class="risk-desc">The worked example projects ~₹659 CPQC at the Park Hyatt. If spa guests remain in leisure mode rather than problem-aware mode, CPQC could land closer to the Drop threshold, and one or more hotel partnerships might close mid-Phase II.</div>
+        <div class="risk-mitigation">
+          <div class="risk-mitigation-label">Mitigation</div>
+          <div class="risk-mitigation-text">Pre-commit <strong>kill criteria in writing</strong> with the partner. Stage hotel activations only after the clinic channel has shown ROI ≥ 2.0×. Cap hotel CapEx at ₹2L per pilot. Prepare the Cycle-2 corrective format (weekday-morning consult, co-hosted with a derm partner) before Cycle 1 launches.</div>
+        </div>
+      </div>
+
+      <div class="risk low">
+        <div class="risk-head">
+          <div class="risk-num">R-04 · Inventory &amp; fulfilment</div>
+          <div class="risk-likelihood">Low</div>
+        </div>
+        <div class="risk-title">A stock-out at a corner can damage brand more than the activation lifts it.</div>
+        <div class="risk-desc">Running out of SAFESCREEN minis at the Park Hyatt — or hero SKUs at a clinic corner — during a 4-week run risks turning the activation into a negative brand event.</div>
+        <div class="risk-mitigation">
+          <div class="risk-mitigation-label">Mitigation</div>
+          <div class="risk-mitigation-text">Weekly inventory cron from every corner into a single Slack channel. A <strong>1.5× buffer</strong> stocked at the Egmore flagship for 24-hour emergency replenishment. Daily-stand-up review of any corner running below 30% of par stock.</div>
+        </div>
+      </div>
+
+      <div class="risk low risk-wide">
+        <div class="risk-head">
+          <div class="risk-num">R-05 · Compliance &amp; ethics</div>
+          <div class="risk-likelihood">Low likelihood · High impact</div>
+        </div>
+        <div class="risk-title">Regulatory line on POS adjacent to prescription.</div>
+        <div class="risk-desc">CDSCO rules on promotional claims, the Drugs and Cosmetics Act, and dermatologist prescription ethics shape how clinic corners can be staffed and signed. A POS that looks like a kickback adjacent to a prescription pad creates real exposure for the clinic partner — and reputational exposure for the brand.</div>
+        <div class="risk-mitigation">
+          <div class="risk-mitigation-label">Mitigation</div>
+          <div class="risk-mitigation-text">Legal review of all POS collateral before Cycle 1. An explicit <strong>"no financial inducement to prescriber"</strong> clause in every clinic MoU. Clinic-corner staffing by CHOSEN brand ambassadors, never by clinic personnel. Quarterly compliance audit by Phase III.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>Implementation Risks</span>
+    <span>19 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     19 · 90-DAY KPIs
+============================================================ -->
+<section class="section kpis-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">14 · The 90-Day Scorecard</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">14 · The 90-Day Scorecard</div>
+    <h2>Four numbers <span class="accent">to defend</span>.</h2>
+    <p class="lead">If these hold, the plan would have earned the case for Q2 expansion to Mumbai and Delhi NCR with dedicated city leads.</p>
+    <div class="kpis-grid">
+      <div class="kpi">
+        <div class="kpi-label">Activations<br>shipped</div>
+        <div class="kpi-value">14</div>
+        <div class="kpi-detail">10 Chennai · 3 Bangalore · 1 Pune <span class="kpi-basis">Target · capacity-bounded</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Blended cost<br>per qualified consult</div>
+        <div class="kpi-value"><span class="currency">₹</span>520</div>
+        <div class="kpi-detail">Below ₹600 ceiling. Clinic channel pulls average down. <span class="kpi-basis">Target · derived</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Renew rate<br>cycle 1 to cycle 2</div>
+        <div class="kpi-value">64<span class="unit">%</span></div>
+        <div class="kpi-detail">9 of 14 partners earn a second cycle <span class="kpi-basis">Target · capacity-bounded</span></div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Partnership<br>revenue</div>
+        <div class="kpi-value"><span class="currency">₹</span>14.2<span class="unit">L</span></div>
+        <div class="kpi-detail">On ₹5.1L spend · blended ~2.78× ROI <span class="kpi-basis">Target · derived</span></div>
+      </div>
+    </div>
+    <p class="kpis-footnote">All four numbers are targets calibrated against the projection set on page 21, not promises. A reasonable day-90 read: if blended ROI clears ~2.0× and renew rate clears ~50%, the model would have earned the case for further capital deployment.<br><br><strong style="color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9em;">Contingency ·</strong> If Bangalore Cycle 1 underperforms, the day-90 mix shifts to 10 Chennai · 4 Bangalore · 0 Pune, with Pune deferred to Q2 and the team consolidating the Chennai + Bangalore footprint instead.</p>
+  </div>
+  <footer class="section-footer">
+    <span>The 90-Day Scorecard</span>
+    <span>20 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     20 · RECEIPTS
+============================================================ -->
+<section class="section receipts-section">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">15 · Receipts</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">15 · Receipts</div>
+    <h2>Every number traces back <span class="accent">to a source</span>.</h2>
+    <p class="lead">All projected figures fall into one of four kinds. Tagged inline where they appear; verifiable here.</p>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-tag cited">Cited</span>Direct from a research source</div>
+      <div class="legend-item"><span class="legend-tag assumed">Assumed</span>Industry benchmark with stated basis</div>
+      <div class="legend-item"><span class="legend-tag derived">Derived</span>Calculation from cited &amp; assumed inputs</div>
+      <div class="legend-item"><span class="legend-tag target">Target</span>Proposed KPI ceiling or floor</div>
+    </div>
+    <ol class="sources">
+      <li><strong>Inc42</strong> · "Can CHOSEN Rewrite India's Beauty Playbook" (March 2026) — <em>2,000-clinic Rx network · 70,000 active users · in-house manufacturing · 256K founder reach.</em></li>
+      <li><strong>Campaign India</strong> · "Chosen targets 10% share of sunscreens by 2030" (2025) — <em>Founder identifies hospitality, health, travel and leisure as planned B2B verticals.</em></li>
+      <li><strong>Series A press coverage</strong> · Indian Retailer, Passionate In Marketing, Entrackr (4 May 2026) — <em>$5M Series A led by Fireside Ventures with BOLD (L'Oréal) and Alkemi Growth Capital; 70% revenue from repeat customers, women 30–50.</em></li>
+      <li><strong>The Derma Co. EBO launch</strong> · India Retailing, Indian Retailer (30–31 January 2025) — <em>First EBO at Airia Mall, Gurugram. Competitor offline movement signal.</em></li>
+      <li><strong>CHOSEN product &amp; pricing</strong> · <em>chosenstore.in</em> — <em>Bestsellers of 2026 collection page · SAFESCREEN Nexgen mini listing · individual PDP pricing as observed May 2026.</em></li>
+      <li><strong>The Tribune</strong> · "CHOSEN Marks 5 Years with HIFIVE Conclave" (February 2025) — <em>Logo unveil with A.R. Rahman · brand visual identity grey/red/silver.</em></li>
+      <li><strong>The Hindu</strong> · "Skincare tips from Dr Renita Rajan whose brand Chosen turns five" (January 2025) — <em>Stated ICP "29 to 45 age bracket, largely from southern states."</em></li>
+      <li><strong>Aestheticmed.in</strong> · CHOSEN Sixer Conclave coverage (March 2026) — <em>Sixth anniversary event at Lady Andal Concert Hall, Chennai.</em></li>
+      <li><strong>Instagram</strong> · <em>@chosen_by_dermatology (64K, 2,376 posts) · @drrenitarajan (256K, 1,210 posts) as observed May 2026.</em></li>
+      <li><strong>Tracxn company profile</strong> · CHOSEN — <em>Entity, funding, headcount and competitive-set verification.</em></li>
+    </ol>
+  </div>
+  <footer class="section-footer">
+    <span>Methodology &amp; Sources</span>
+    <span>21 / 22</span>
+  </footer>
+</section>
+
+<!-- ============================================================
+     21 · CLOSING (dark)
+============================================================ -->
+<section class="section section-dark closing">
+  <header class="section-header">
+    <div class="brand">CHOSEN<span class="brand-sub">by Dermatology</span></div>
+    <div class="section-id">Closing</div>
+  </header>
+  <div class="section-body">
+    <div class="eyebrow">Closing</div>
+    <h2>Egmore is a strong base.<br><span class="accent">Below is one view of what could come next.</span></h2>
+    <p class="subtitle">This is a working draft, not a finished proposal. Happy to walk through the Park Hyatt logic, the tracker, the risk register or the Pune case in detail. A fifteen-minute conversation would help me sharpen anything in here that doesn't match the operating reality.</p>
+    <div class="closing-contact">
+      <div>
+        <strong>From</strong>
+        <div class="value">Harsh Jain Ashok</div>
+        <div>Mesa School of Business · PGP'26</div>
+        <div>Best AI Product Award (×2)</div>
+      </div>
+      <div>
+        <strong>Email</strong>
+        <div class="value">harsh_ashok@pg26.mesaschool.co</div>
+      </div>
+      <div>
+        <strong>Phone</strong>
+        <div class="value">+91 97870 11111</div>
+      </div>
+    </div>
+  </div>
+  <footer class="section-footer">
+    <span>End · An Offline Partnerships Playbook</span>
+    <span>22 / 22</span>
+  </footer>
+</section>
+
+<script>
+  // Scroll progress indicator
+  const progress = document.getElementById('progress');
+  function updateProgress() {
+    const scrolled = window.scrollY;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = (scrolled / height) * 100;
+    progress.style.width = percent + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
+
+</body>
+</html>
